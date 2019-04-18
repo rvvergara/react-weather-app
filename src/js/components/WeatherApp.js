@@ -3,11 +3,12 @@ import SearchForm from './SearchForm';
 import CityRecommendations from './CityRecommendations';
 import Loading from './Loading';
 import Error from './Error';
-import DataTable from './DataTable';
+import DailyData from './DailyData';
 import {getWeatherData, listCities} from '../helpers/api';
 
 class WeatherApp extends React.Component {
   state = {
+    celsius: true,
     searchTerm: '',
     weatherDataArr: [],
     fetchingCity: false,
@@ -15,7 +16,7 @@ class WeatherApp extends React.Component {
     cities: [],
     city: null,
     cityError: null,
-    dataError: null
+    dataError: null,
   }
   handleChange = async (key, value) =>{
       this.setState(() => ({[key]: value,
@@ -30,6 +31,11 @@ class WeatherApp extends React.Component {
       searchTerm: cityName,
       cities: [],
     }));
+  }
+  changeTempUnit = () => {
+    this.setState((prevState)=>({
+      celsius: !prevState.celsius
+    }))
   }
   loadCities = data => {
     if(data){
@@ -88,9 +94,11 @@ class WeatherApp extends React.Component {
         <Error 
           dataError={this.state.dataError}
         />
-        <DataTable 
+        <DailyData
+          celsius={this.state.celsius}
           city={this.state.city}
           weatherDataArr={this.state.weatherDataArr}
+          changeTempUnit={this.changeTempUnit}
         />
       </div>
     </div>);

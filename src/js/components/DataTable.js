@@ -1,23 +1,26 @@
 import React from 'react';
-import TodayData from './TodayData';
-class DataTable extends React.Component {
-  state = {
-    unit: 'C',
-  }
-  render(){
-    const {
-      city,
-      weatherDataArr,
-    } = this.props;
-    return (
-      city && <div className="row animate">
-        <h1>{city}</h1>
-        <TodayData 
-          data={weatherDataArr[0]}
-        />
-      </div>
-    )
-  }
-}
+import {
+  tempToDisplay,
+} from '../helpers/dataHelpers';
+
+const DataTable = (props) => {
+  const {
+    data,
+    celsius,
+  } = props;
+  const {
+    max_temp,
+    min_temp,
+    humidity,
+  } = data;
+  const unitDisp = celsius ? 'C' : 'F';
+  return (
+    <ul>
+      <li>Max Temp: {tempToDisplay(unitDisp, max_temp)}&deg;{unitDisp}</li>
+      <li>Min Temp: {tempToDisplay(unitDisp, min_temp)}&deg;{unitDisp}</li>
+      <li>{humidity}%</li>
+    </ul>
+  )
+};
 
 export default DataTable;
