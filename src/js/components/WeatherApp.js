@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchForm from './SearchForm';
+import CityRecommendations from './CityRecommendations';
 import {getWeatherData, listCities} from '../helpers/api';
 
 class WeatherApp extends React.Component {
@@ -9,25 +10,59 @@ class WeatherApp extends React.Component {
     fetchingCity: false,
     cities: [],
     city: '',
+    error: '',
   }
-  handleChange = (key, value) =>{
+  handleChange = async (key, value) =>{
       this.setState(() => ({[key]: value,
-        fetchingCity: true})); 
-      listCities(value)
-        .then(res => this.setState(()=>({
-          fetchingCity: false,
-          cities: res,
-        })))
-  };
-  handleSubmit = (term) => {
-    const weatherData = getWeatherData(term);
-    weatherData.then(data => this.setWeatherData(data));
+        fetchingCity: true}));
+      const cities = await listCities(value);
+      this.loadCities(cities);
+   };
+  handleCitySelect = (cityName) => {
+    this.handleSubmit(cityName);
+    this.setState(()=>({
+      city: cityName,
+      fetchingCity: false,
+      searchTerm: cityName,
+      cities: [],
+    }));
   }
-  setWeatherData = (data) => this.setState(() => ({
-    weatherDataArr: data.consolidated_weather, 
-    searchTerm: '',
-    city: data.title,
-  }));
+  loadCities = data => {
+    if(data){
+      this.setState(()=>({
+        fetchingCity: false,
+        cities: data,
+        error: null,
+      }))
+    }else{
+      this.setState(()=>({
+        cities: [],
+        error: "Can't find what you're looking for"
+      }))
+    }
+  }
+  handleSubmit = async (term) => {
+    const weatherData = await getWeatherData(term); 
+    this.setWeatherData(weatherData);
+  }
+  setWeatherData = (data) => {
+    if(data){
+      this.setState(() => ({
+        weatherDataArr: data.consolidated_weather, 
+        searchTerm: '',
+        city: data.title,
+        cities: [],
+      }));
+    }else{
+      this.setState(()=>(
+        {
+          searchTerm: '', 
+          error: "City not found",
+          cities: [],
+        }
+      ))
+    }
+  };
   render(){
     return (<div>
       <h1>Weather App</h1>
@@ -36,6 +71,10 @@ class WeatherApp extends React.Component {
           searchTerm={this.state.searchTerm}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+        />
+        <CityRecommendations 
+          cities={this.state.cities}
+          handleCitySelect={this.handleCitySelect} 
         />
       </div>
     </div>);
