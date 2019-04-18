@@ -37,7 +37,6 @@ class WeatherApp extends React.Component {
         fetchingCity: false,
         cities: data,
         cityError: null,
-        weatherDataArr: [],
       }))
     }else{
       this.setState(()=>({
@@ -91,6 +90,7 @@ class WeatherApp extends React.Component {
         />
         <DataTable 
           city={this.state.city}
+          weatherDataArr={this.state.weatherDataArr}
         />
       </div>
     </div>);

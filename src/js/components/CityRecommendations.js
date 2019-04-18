@@ -6,7 +6,7 @@ const CityRecommendations = (props) => {
     handleCitySelect
   } = props;
   return (
-    <div>
+    <div id="city-recommendations">
       {
         cities.map(city => (
           <div
