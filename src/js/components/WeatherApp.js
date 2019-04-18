@@ -3,6 +3,7 @@ import SearchForm from './SearchForm';
 import CityRecommendations from './CityRecommendations';
 import Loading from './Loading';
 import Error from './Error';
+import DataTable from './DataTable';
 import {getWeatherData, listCities} from '../helpers/api';
 
 class WeatherApp extends React.Component {
@@ -25,7 +26,6 @@ class WeatherApp extends React.Component {
   handleCitySelect = (cityName) => {
     this.handleSubmit(cityName);
     this.setState(()=>({
-      city: cityName,
       fetchingCity: false,
       searchTerm: cityName,
       cities: [],
@@ -47,7 +47,7 @@ class WeatherApp extends React.Component {
     }
   }
   handleSubmit = async (term) => {
-    this.setState(()=>({fetchingWeatherData: true, cities: []}));
+    this.setState(()=>({fetchingWeatherData: true, cities: [], city: null}));
     const weatherData = await getWeatherData(term)
     this.setWeatherData(weatherData);
   }
@@ -88,6 +88,9 @@ class WeatherApp extends React.Component {
         />
         <Error 
           dataError={this.state.dataError}
+        />
+        <DataTable 
+          city={this.state.city}
         />
       </div>
     </div>);
