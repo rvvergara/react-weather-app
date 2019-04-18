@@ -1,5 +1,6 @@
 import React from 'react';
 import TodayData from './TodayData';
+import NextDayData from './NextDayData';
 
 export const DailyData = (props) => {
   const {
@@ -16,6 +17,15 @@ export const DailyData = (props) => {
         celsius={celsius}
         changeTempUnit={changeTempUnit}
       />
+      {
+        weatherDataArr.slice(1,5).map(data => (
+          <NextDayData
+            key={data.id}
+            data={data}
+            celsius={celsius} 
+          />
+        ))
+      }
     </div>
   )
 }

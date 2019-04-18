@@ -1,6 +1,5 @@
 import React from 'react';
 import DataTable from './DataTable';
-import TempSelector from './TempSelector';
 import {
   tempToDisplay,
   parseDate,
@@ -8,29 +7,23 @@ import {
 
 const weatherImageUrl = 'https://www.metaweather.com/static/img/weather/png/';
 
-const TodayData = (props) => {
+const NextDayData = (props) => {
   const {
     data,
     celsius,
-    changeTempUnit
   } = props;
-
   const unitDisp = celsius ? 'C' : 'F';
   const temp = tempToDisplay(unitDisp, data.the_temp);
   return (
-    <div>
-      <h3>{parseDate(data.applicable_date, true)}</h3>
-      <img
-        src={`${weatherImageUrl}${data.weather_state_abbr}.png`} 
-        alt="weather today"
+    <div className="next">
+      <h4>{parseDate(data.applicable_date, false)}</h4>
+      <img 
+        src={`${weatherImageUrl}${data.weather_state_abbr}.png`}
+        alt="another day data"
         className="weather-img"
-        />
-        <TempSelector 
-          celsius={celsius}
-          changeTempUnit={changeTempUnit}
-        />
-        <h3>{temp}&deg;{unitDisp}</h3>
-        <DataTable 
+      />
+      <h4>{temp}&deg;{unitDisp}</h4>
+      <DataTable 
           data={data}
           celsius={celsius}
         />
@@ -38,4 +31,4 @@ const TodayData = (props) => {
   )
 };
 
-export default TodayData;
+export default NextDayData;
