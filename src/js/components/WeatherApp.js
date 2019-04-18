@@ -2,6 +2,7 @@ import React from 'react';
 import SearchForm from './SearchForm';
 import CityRecommendations from './CityRecommendations';
 import Loading from './Loading';
+import Error from './Error';
 import {getWeatherData, listCities} from '../helpers/api';
 
 class WeatherApp extends React.Component {
@@ -11,12 +12,13 @@ class WeatherApp extends React.Component {
     fetchingCity: false,
     fetchingWeatherData: false,
     cities: [],
-    city: '',
-    error: '',
+    city: null,
+    cityError: null,
+    dataError: null
   }
   handleChange = async (key, value) =>{
       this.setState(() => ({[key]: value,
-        fetchingCity: true}));
+        fetchingCity: true, dataError: null}));
       const cities = await listCities(value);
       this.loadCities(cities);
    };
@@ -34,18 +36,18 @@ class WeatherApp extends React.Component {
       this.setState(()=>({
         fetchingCity: false,
         cities: data,
-        error: null,
+        cityError: null,
         weatherDataArr: [],
       }))
     }else{
       this.setState(()=>({
         cities: [],
-        error: "Can't find what you're looking for"
+        cityError: "Can't find what you're looking for"
       }))
     }
   }
   handleSubmit = async (term) => {
-    this.setState(()=>({fetchingWeatherData: true}));
+    this.setState(()=>({fetchingWeatherData: true, cities: []}));
     const weatherData = await getWeatherData(term)
     this.setWeatherData(weatherData);
   }
@@ -55,15 +57,15 @@ class WeatherApp extends React.Component {
         weatherDataArr: data.consolidated_weather, 
         searchTerm: '',
         city: data.title,
-        cities: [],
         fetchingWeatherData: false,
       }));
     }else{
       this.setState(()=>(
         {
           searchTerm: '', 
-          error: "City not found",
+          dataError: "City not found",
           cities: [],
+          fetchingWeatherData: false,
         }
       ))
     }
@@ -83,6 +85,9 @@ class WeatherApp extends React.Component {
         />
         <Loading 
           fetchingWeatherData={this.state.fetchingWeatherData}
+        />
+        <Error 
+          dataError={this.state.dataError}
         />
       </div>
     </div>);
