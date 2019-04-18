@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../scss/main.scss';
+import WeatherApp from './components/WeatherApp';
 
-const template = <div>React Weather App</div>;
-
-ReactDOM.render(template, document.getElementById('app'));
+ReactDOM.render(<WeatherApp />, document.getElementById('app'));
