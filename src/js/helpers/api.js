@@ -1,4 +1,4 @@
-import fetchData from './fetchData';
+import { fetchData, fetchCities } from './fetchData';
 
 const weatherSearchUrl = "https://www.metaweather.com/api/location/";
 
@@ -8,4 +8,6 @@ const corsProxyUrl = `https://yacdn.org/proxy/`;
 
 const getWeatherData = city => fetchData(locationSearchUrl, weatherSearchUrl, city, 'woeid', corsProxyUrl);
 
-export default getWeatherData;
+const listCities = term => fetchCities(locationSearchUrl, term, corsProxyUrl);
+
+export { getWeatherData, listCities };

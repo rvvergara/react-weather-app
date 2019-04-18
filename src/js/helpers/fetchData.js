@@ -10,4 +10,9 @@
   };
 
 
-  export default fetchData;
+  const fetchCities = async (locationSearchUrl, term, proxyUrl) => {
+    const cities = fetch(proxyUrl + locationSearchUrl + term).then(res => res.json()).catch(() => `${term} not found`);
+    return cities;
+  };
+
+  export { fetchData, fetchCities };

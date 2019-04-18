@@ -1,16 +1,24 @@
 import React from 'react';
 import SearchForm from './SearchForm';
-import getWeatherData from '../helpers/api';
+import {getWeatherData, listCities} from '../helpers/api';
 
 class WeatherApp extends React.Component {
   state = {
     searchTerm: '',
     weatherDataArr: [],
+    fetchingCity: false,
+    cities: [],
     city: '',
   }
-  handleChange = (key, value) => this.setState(()=>({
-    [key]: value,
-  }));
+  handleChange = (key, value) =>{
+      this.setState(() => ({[key]: value,
+        fetchingCity: true})); 
+      listCities(value)
+        .then(res => this.setState(()=>({
+          fetchingCity: false,
+          cities: res,
+        })))
+  };
   handleSubmit = (term) => {
     const weatherData = getWeatherData(term);
     weatherData.then(data => this.setWeatherData(data));
