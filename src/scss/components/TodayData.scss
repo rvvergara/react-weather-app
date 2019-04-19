@@ -1,4 +1,31 @@
+#today-data {
+  background: $white;
+  display: flex;
+  font-size: $medium;
+  margin: $medium*0.7 auto;
+  padding: $medium * 0.7;
+  width: 60%;
+}
+
+#today-data-main * {
+  margin: 0;
+}
+
+#temp-display {
+  display: flex;
+  flex-direction: column;
+}
+
+#temp-display h3 {
+  margin-top: $regular;
+}
+
 .weather-img {
-  width: 20%;
+  width: 30%;
+  height: 30%;
   display: inline-block;
+}
+
+.weather-img-temp {
+  display: flex;
 }

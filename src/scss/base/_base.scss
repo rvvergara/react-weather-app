@@ -1,31 +1,31 @@
-body,
 html {
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
   height: 100%;
 }
 
 .bg {
-  /* The image used */
   background-image: url("../images/bg.jpg");
-
-  /* Full height */
   height: 100%;
-
-  /* Center and scale the image nicely */
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
 }
 
+.container {
+  margin-top: $large;
+  padding: 0 $ultra-large;
+  position: relative;
+}
+
+
 .w-10 {
   width: 10% !important;
-}
-
-.invisible {
-  opacity: 0;
-}
-
-.hidden {
-  visibility: hidden;
 }
 
 .animate {

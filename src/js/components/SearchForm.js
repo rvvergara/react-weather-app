@@ -15,12 +15,15 @@ const SearchForm = (props) => {
         }
       }
     >
-      <input
-        placeholder="Search for your city"
-        name="searchTerm"
-        value={searchTerm}
-        onChange={(e)=> handleChange(e.target.name, e.target.value)}
-      />
+     <div className="form-elements">
+        <input
+          placeholder="Search for your city"
+          name="searchTerm"
+          value={searchTerm}
+          onChange={(e)=> handleChange(e.target.name, e.target.value)}
+        />
+        <button>Fetch Weather</button>
+     </div>
     </form>
   )
 }

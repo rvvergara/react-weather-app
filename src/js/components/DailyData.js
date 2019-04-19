@@ -11,21 +11,23 @@ export const DailyData = (props) => {
   } = props;
   return (
     city && <div className="row animate">
-      <h1>{city}</h1>
       <TodayData 
         data={weatherDataArr[0]}
         celsius={celsius}
+        city={city}
         changeTempUnit={changeTempUnit}
       />
-      {
-        weatherDataArr.slice(1,5).map(data => (
-          <NextDayData
-            key={data.id}
-            data={data}
-            celsius={celsius} 
-          />
-        ))
-      }
+      <div className="next-days-data">
+        {
+          weatherDataArr.slice(1,5).map(data => (
+            <NextDayData
+              key={data.id}
+              data={data}
+              celsius={celsius} 
+            />
+          ))
+        }
+      </div>
     </div>
   )
 }

@@ -1,0 +1,25 @@
+form {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.form-elements {
+  width: 90%;
+  display: flex;
+}
+
+input {
+  border-radius: $regular * 0.5;
+  flex: 2;
+  font-size: $medium;
+  padding: $regular;
+}
+
+button {
+  background: $light-green;
+  border-radius: $regular * 0.5;
+  color: $white;
+  font-size: $medium;
+  outline: none;
+  padding: 0 $medium;
+}
