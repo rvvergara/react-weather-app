@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header';
 import SearchForm from './SearchForm';
 import CityRecommendations from './CityRecommendations';
 import Loading from './Loading';
@@ -77,7 +78,7 @@ class WeatherApp extends React.Component {
   };
   render(){
     return (<div>
-      <h1>Weather App</h1>
+      <Header />
       <div className="container">
         <SearchForm 
           searchTerm={this.state.searchTerm}
