@@ -1,11 +1,11 @@
 .main-header {
   color: $white;
   background: $dark-grey;
-  padding: $medium;
+  padding: $regular * 0.5;
 
 }
 
 .app-name {
   margin: 0;
-  font-size: $ultra-large;
+  font-size: $ultra-large * 0.8;
 }

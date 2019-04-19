@@ -17,16 +17,20 @@ const NextDayData = (props) => {
   return (
     <div className="next">
       <h4>{parseDate(data.applicable_date, false)}</h4>
-      <img 
-        src={`${weatherImageUrl}${data.weather_state_abbr}.png`}
-        alt="another day data"
-        className="weather-img"
-      />
-      <h4>{temp}&deg;{unitDisp}</h4>
-      <DataTable 
+      <div className="weather-img-temp">
+        <img 
+          src={`${weatherImageUrl}${data.weather_state_abbr}.png`}
+          alt="another day data"
+          className="weather-img"
+        />
+        <h4>{temp}&deg;{unitDisp}</h4>
+      </div>
+      <div className="next-days-table">
+        <DataTable 
           data={data}
           celsius={celsius}
         />
+      </div>
     </div>
   )
 };

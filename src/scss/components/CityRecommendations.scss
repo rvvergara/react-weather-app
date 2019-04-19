@@ -1,6 +1,6 @@
 #city-recommendations {
   background-color: $white;
-  left: $ultra-large * 7;
+  // left: $x-large * 9;
   position: absolute;
   width: 35%;
   z-index: 10;
@@ -16,4 +16,25 @@
 .city-item:hover {
   cursor: pointer;
   font-weight: bold;
+}
+
+@media (min-width: $city-recommendation-breakpoint1) {
+  #city-recommendations {
+    left: $ultra-large * 10;
+    width: 20%;
+  }
+}
+
+@media (max-width: $city-recommendation-breakpoint2) {
+  #city-recommendations {
+    left: $x-large * 7;
+    width: 30%;
+  }
+}
+
+@media (min-width: $desktop-breakpoint) {
+  #city-recommendations {
+    left: $ultra-large * 6.2;
+    width: 40%;
+  }
 }

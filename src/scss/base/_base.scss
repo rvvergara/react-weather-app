@@ -13,12 +13,12 @@ body {
   background-image: url("../images/bg.jpg");
   height: 100%;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
 }
 
 .container {
-  margin-top: $x-large;
+  margin-top: $large;
   padding: 0 $ultra-large;
   position: relative;
 }

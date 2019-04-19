@@ -1,0 +1,23 @@
+.next-days-table {
+  width: 80%;
+}
+
+.next-days-data {
+  display: flex;
+  flex-direction: column;
+  font-size: $medium;
+  margin: $regular * 0.5;
+}
+
+.next {
+  background: $white;
+  padding: $medium * 0.6 $medium;
+  flex-basis: 20%;
+  margin: $medium * 0.6;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .next-days-data {
+    flex-direction: row;
+  }
+}
