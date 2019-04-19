@@ -16,9 +16,9 @@ const DataTable = (props) => {
   const unitDisp = celsius ? 'C' : 'F';
   return (
     <ul>
-      <li>Max Temp: {tempToDisplay(unitDisp, max_temp)}&deg;{unitDisp}</li>
-      <li>Min Temp: {tempToDisplay(unitDisp, min_temp)}&deg;{unitDisp}</li>
-      <li>{humidity}%</li>
+      <li><b>Max Temp:</b> {tempToDisplay(unitDisp, max_temp)}&deg;{unitDisp}</li>
+      <li><b>Min Temp:</b> {tempToDisplay(unitDisp, min_temp)}&deg;{unitDisp}</li>
+      <li><b>Humidity: </b>{humidity}%</li>
     </ul>
   )
 };

@@ -1,0 +1,13 @@
+#today-data-table {
+  width: 70%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding: $regular;
+  border: 1px solid $dark-grey;
+  border-color: rgba(128, 128, 128, 0.5)
+}
