@@ -10,6 +10,7 @@ const CityRecommendations = (props) => {
       {
         cities.map(city => (
           <div
+            className="city-item"
             onClick={()=> handleCitySelect(city.title)}
             key={city.woeid}
           >

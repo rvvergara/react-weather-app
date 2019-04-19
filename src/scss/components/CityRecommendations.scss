@@ -1,5 +1,19 @@
 #city-recommendations {
+  background-color: $white;
+  left: $ultra-large * 7;
   position: absolute;
+  width: 35%;
   z-index: 10;
-  background-color: gray;
+}
+
+.city-item {
+  padding: $regular * 0.9;
+  font-size: $medium * 0.9;
+  border-bottom: 1px solid $dark-grey;
+  border-bottom-color: rgba(127, 127, 127, 0.3);
+}
+
+.city-item:hover {
+  cursor: pointer;
+  font-weight: bold;
 }
