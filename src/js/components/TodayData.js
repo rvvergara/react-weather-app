@@ -29,11 +29,13 @@ const TodayData = (props) => {
             alt="weather today"
             className="weather-img"
             />
-            <TempSelector 
-              celsius={celsius}
-              changeTempUnit={changeTempUnit}
-            />
-            <h3>{temp}&deg;{unitDisp}</h3>
+            <div id="temp-display">
+              <TempSelector 
+                celsius={celsius}
+                changeTempUnit={changeTempUnit}
+              />
+              <h3>{temp}&deg;{unitDisp}</h3>
+            </div>
         </div>
       </div>
         <div id="today-data-table">

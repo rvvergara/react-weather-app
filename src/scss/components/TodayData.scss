@@ -11,6 +11,15 @@
   margin: 0;
 }
 
+#temp-display {
+  display: flex;
+  flex-direction: column;
+}
+
+#temp-display h3 {
+  margin-top: $regular;
+}
+
 .weather-img {
   width: 30%;
   height: 30%;
